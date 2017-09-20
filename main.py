@@ -1,10 +1,12 @@
+""" Simple program to run a Caesar Cipher """
+
 from flask import Flask, request
 from caesar import rotate_string
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-form = """ 
+form = """
         <!DOCTYPE html>
 
         <html>
@@ -36,13 +38,18 @@ form = """
         </html>
         """
 
+
 @app.route("/")
 def index():
+    """ Runs the app """
+
     return form.format("")
+
 
 @app.route("/", methods=['POST'])
 def encrypt():
-    
+    """ Encrypts the string and returns it """
+
     rot = request.form['rot']
     rot = int(rot)
     text = request.form['text']
